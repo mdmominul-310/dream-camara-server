@@ -196,7 +196,7 @@ async function run() {
         //update order status 
         app.put('/order', async (req, res) => {
             const orderId = req.query.orderId;
-            const filter = { orderId: orderId }
+            const filter = { productId: orderId }
             const updateStatus = {
                 $set: {
                     status: "Deliverd"
