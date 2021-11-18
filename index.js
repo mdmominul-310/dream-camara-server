@@ -129,7 +129,7 @@ async function run() {
                 }
 
                 const result = await caruselCollection.updateOne(find, updatedItem)
-                console.log(result)
+
                 res.json(result)
             }
 
@@ -140,7 +140,7 @@ async function run() {
             const find = { _id: objectId(id) }
             const result = await caruselCollection.deleteOne(find)
             res.json(result);
-            console.log(result)
+
 
         })
 
@@ -168,7 +168,7 @@ async function run() {
             console.log(email)
             const filter = { email: email }
             const result = await usersCollection.findOne(filter)
-            console.log(result)
+
             res.json(result)
         })
         //make admin
@@ -183,7 +183,7 @@ async function run() {
             }
             const result = await usersCollection.updateOne(filter, makeAdmin)
             res.json(result)
-            console.log(result)
+
 
         })
         //post order item
@@ -191,7 +191,7 @@ async function run() {
             const orderInfo = req.body;
             const result = await allOrderCollection.insertOne(orderInfo)
             res.json(result)
-            console.log(result)
+
         })
         //update order status 
         app.put('/order', async (req, res) => {
