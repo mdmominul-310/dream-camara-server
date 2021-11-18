@@ -203,7 +203,7 @@ async function run() {
                 }
             }
             const result = await allOrderCollection.updateOne(filter, updateStatus);
-            console.log(result)
+            res.json(result)
         })
         //delete order item
         app.delete('/order', async (req, res) => {
@@ -220,18 +220,18 @@ async function run() {
 
         })
         // get single item for single person filter by email
-        app.get('order', async (req, res) => {
+        app.get('/order', async (req, res) => {
             const email = req.query.email;
             const filter = { email: email };
-            const result = await allOrderCollection.findOne(filter);
+            const result = await allOrderCollection.find(filter).toArray();
             res.json(result);
-            console.log(result)
+
         })
         app.post('/rate', async (req, res) => {
             const rate = req.body;
             const result = await ratingCollection.insertOne(rate)
             res.json(result)
-            console.log(req)
+
         })
         app.get('/rate', async (req, res) => {
             const result = await ratingCollection.find({}).toArray();
