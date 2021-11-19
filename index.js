@@ -87,7 +87,7 @@ async function run() {
             const find = { _id: objectId(id) }
             const result = await productsCollection.deleteOne(find)
             res.json(result);
-            console.log(result)
+
 
         })
         // add carusel item
@@ -105,10 +105,10 @@ async function run() {
         //get method for find one carusel
         app.get('/caruselitem', async (req, res) => {
             const id = req.query.id;
-            console.log(id)
+
             const query = { _id: objectId(id) }
             const result = await caruselCollection.findOne(query)
-            console.log(result)
+
             res.json(result)
 
         })
@@ -117,7 +117,7 @@ async function run() {
             const updatecarusel = req.body;
             if (updatecarusel?._id) {
                 const find = { _id: objectId(updatecarusel._id) }
-                console.log(find)
+
                 const updatedItem = {
                     $set: {
 
@@ -165,7 +165,7 @@ async function run() {
         //get a single user
         app.get('/user', async (req, res) => {
             const email = req.query.email;
-            console.log(email)
+
             const filter = { email: email }
             const result = await usersCollection.findOne(filter)
 
@@ -175,7 +175,7 @@ async function run() {
         app.put('/makeadmin', async (req, res) => {
             const email = req.query.email;
             const filter = { email: email };
-            console.log(req.query)
+
             const makeAdmin = {
                 $set: {
                     role: "admin"
@@ -211,7 +211,7 @@ async function run() {
             const filter = { _id: objectId(id) }
             const result = await allOrderCollection.deleteOne(filter);
             res.json(result)
-            console.log(result)
+
         })
         // all order get
         app.get('/orders', async (req, res) => {
